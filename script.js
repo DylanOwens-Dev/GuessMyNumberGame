@@ -9,10 +9,9 @@ let jsScore = 20;
 let highScore = document.querySelector('.highscore');
 let jsHighScore = 0;
 let body = document.querySelector('body');
+let reload = document.querySelector('.again');
 
 let num = Math.trunc(Math.random() * 20) + 1;
-
-secretNum.textContent = num;
 
 //click function for game
 checker.addEventListener('click', function () {
@@ -27,10 +26,12 @@ checker.addEventListener('click', function () {
     message.textContent = 'Correct Number!';
     body.style.backgroundColor = '#60b347';
     secretNum.style.width = '30rem';
-    // if (jsScore > jsHighScore) {
-    //   jsHighScore = jsScore;
-    //   highScore.textContent = jsHighScore;
-    // }
+    secretNum.textContent = num;
+
+    if (jsScore > jsHighScore) {
+      jsHighScore = jsScore;
+      highScore.textContent = jsHighScore;
+    }
 
     //if guess is too high
   } else if (guess > num) {
@@ -54,4 +55,17 @@ checker.addEventListener('click', function () {
       score.textContent = 0;
     }
   }
+});
+
+//click function to reload the game
+reload.addEventListener('click', function () {
+  num = Math.trunc(Math.random() * 20) + 1;
+  jsScore = 20;
+
+  score.textContent = jsScore;
+  gameInput.value = '';
+  secretNum.textContent = '?';
+  secretNum.style.width = '15rem';
+  body.style.backgroundColor = '#222';
+  message.textContent = 'Start guessing...';
 });
