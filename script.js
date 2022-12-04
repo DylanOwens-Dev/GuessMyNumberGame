@@ -33,21 +33,10 @@ checker.addEventListener('click', function () {
       highScore.textContent = jsHighScore;
     }
 
-    //if guess is too high
-  } else if (guess > num) {
+    //if guess is wrong
+  } else if (guess !== num) {
     if (jsScore > 1) {
-      message.textContent = 'Too high!';
-      jsScore--;
-      score.textContent = jsScore;
-    } else {
-      message.textContent = 'You lost the game!';
-      score.textContent = 0;
-    }
-
-    // if guess is to low
-  } else if (guess < num) {
-    if (jsScore > 1) {
-      message.textContent = 'Too low!';
+      message.textContent = guess > num ? 'Too high!' : 'Too low!';
       jsScore--;
       score.textContent = jsScore;
     } else {
